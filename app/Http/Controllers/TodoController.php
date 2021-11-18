@@ -32,9 +32,10 @@ class TodoController extends Controller
     public function update(TodoRequest $request)
     {
         $this->validate($request, Task::$validation);
-        $data = $request->all();
-        unset($data['_token']);
-        Task::where('content', $request->content)->update($data);
+        $tasks = $request->all();
+        unset($tasks['_token']);
+        Task::where('content', $request->content)->update($tasks);
+        dd($tasks);
         // return redirect('/');
         // $tasks = Task::all();
         return view('update', ['tasks' => $tasks]);

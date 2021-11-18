@@ -27,9 +27,22 @@
                 @foreach ($tasks as $task)
                 <tr class="list">
                     <td class="date">{{ $task->created_at }}</td>
-                    <td><input class="listed_textbox" type="text" name="content" value="{{ $task->content }}"></td>
-                    <td><button class="btn btn_update" action="/todo/update">更新</button></td>
-                    <td><button class="btn btn_delete" action="/todo/delete">追加</button></td>
+                    <form action="/todo/update" method="POST">
+                        @csrf
+                        {{-- 取得したデータをinputのテキストボックスの中に入れて表示させる --}}
+                        <td><input type="text" name="content" value="{{ $task->content }}"></td>
+                        <td>
+                            <button class="btn btn_update">更新</button>
+                        </td>
+                    </form>
+                    <form action="/todo/delete" method="POST">
+                        @csrf
+                        {{-- type="hidden"で非表示にする --}}
+                        <td><input type="hidden" name="content" value="{{ $task->content }}"></td>
+                        <td>
+                            <button class="btn btn_delete">追加</button>
+                        </td>
+                    </form>
                 </tr>
                 @endforeach
             </table>
