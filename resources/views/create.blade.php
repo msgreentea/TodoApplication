@@ -24,10 +24,10 @@
                     <th>更新</th>
                     <th>削除</th>
                 </tr>
-                @foreach ($tasks as $task)
+                @foreach ($data as $datum)
                 <tr class="list">
-                    <td class="date">{{ $task->created_at }}</td>
-                    <td><input class="listed_textbox" type="text" name="content" value="{{ $task->content }}"></td>
+                    <td class="date">{{ $datum->created_at }}</td>
+                    <td><input class="listed_textbox" type="text" name="content" value="{{ $datum->content }}"></td>
                     <td><button class="btn btn_update" action="/todo/update">更新</button></td>
                     <td><button class="btn btn_delete" action="/todo/delete">追加</button></td>
                 </tr>
