@@ -20,25 +20,25 @@ class TodoController extends Controller
         $this->validate($request, Task::$validation);
         $data = $request->all();
         $tasks = Task::create(['content' => $request->content]);
-        // return redirect('/');
-        $tasks = Task::all();
-        return view('create', ['tasks' => $tasks]);
+        return redirect('/');
+        // $tasks = Task::all();
+        // return view('create', ['tasks' => $tasks]);
     }
     public function edit(TodoRequest $request)
     {
         $tasks = Task::find($request->content);
-        return view('update', ['tasks' => $tasks]);
+        return view('update', ['data' => $tasks]);
     }
     public function update(TodoRequest $request)
     {
         $this->validate($request, Task::$validation);
-        $tasks = $request->all();
-        unset($tasks['_token']);
-        Task::where('content', $request->content)->update($tasks);
-        dd($tasks);
-        // return redirect('/');
+        $data = $request->all();
+        unset($data['_token']);
+        Task::where('content', $request->content)->update($data);
+        // dd($tasks);
+        return redirect('/');
         // $tasks = Task::all();
-        return view('update', ['tasks' => $tasks]);
+        // return view('update', ['tasks' => $tasks]);
     }
     public function delete(TodoRequest $request)
     {
