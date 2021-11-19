@@ -13,6 +13,7 @@ class TodoController extends Controller
         $tasks = Task::all();
         return view('index', ['tasks' => $tasks]);
     }
+
     public function create(TodoRequest $request)
     {
         // Modelに記述したvalidationを持ってくる。
@@ -39,6 +40,7 @@ class TodoController extends Controller
         // dd($tasks);
         return view('update', ['tasks' => $tasks]);
     }
+
     public function delete(TodoRequest $request)
     {
         $tasks = new Task;
