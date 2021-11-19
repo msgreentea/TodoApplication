@@ -9,7 +9,7 @@ class TodoController extends Controller
 {
     public function index()
     {
-        // 一覧で表示
+        // 一覧を表示
         $tasks = Task::all();
         return view('index', ['tasks' => $tasks]);
     }
@@ -31,17 +31,15 @@ class TodoController extends Controller
 
         $tasks = $request->all();
         unset($tasks['_token']);
-
         Task::where('id', $request->id)->update($tasks);
 
         // dd($tasks);
-        // return view('update', ['tasks' => $tasks]);
         return redirect('/');
     }
 
     public function delete(TodoRequest $request)
     {
 
-        return redirect('/');
+        // return redirect('/');
     }
 }
