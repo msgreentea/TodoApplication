@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-// use Illuminate\Http\Request;
 use App\Http\Requests\TodoRequest;
 use App\Models\Task;
 
@@ -18,8 +17,10 @@ class TodoController extends Controller
     {
         // Modelに記述したvalidationを持ってくる。
         $this->validate($request, Task::$validation);
+
         $tasks = $request->all();
         $tasks = Task::create(['content' => $request->content]);
+        // dd($tasks);
         return redirect('/');
     }
 
@@ -29,28 +30,19 @@ class TodoController extends Controller
 
         $tasks = $request->all();
         unset($tasks['_token']);
-        Task::where('content', $request->content)->update($tasks);
 
-        // $tasks = Task::where('content', $request->content);
-        // $tasks->content = $request->content;
-        // $tasks->save();
 
-        dd($tasks);
-        // return redirect('/')->withInput(
-        //     $request->except('content')
-        // );
-        // $tasks = Task::all();
+        Task::where('content', $request->content)->update([
+            'content' => $request->content
+        ]);
+
+        // dd($tasks);
         return view('update', ['tasks' => $tasks]);
     }
     public function delete(TodoRequest $request)
     {
-        // $tasks = Task::find('content', $request->content);
-        // $tasks = Task::find($request->content);
         $tasks = new Task;
         $tasks = Task::find($request->content)->delete();
-        // $tasks->delete();
-        return redirect('/');
-        // $tasks = Task::all();
-        // return redirect('index', ['tasks' => $tasks]);
+        // return redirect('/');
     }
 }

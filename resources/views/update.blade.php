@@ -26,7 +26,7 @@
                 </tr>
                 @foreach ($tasks as $task)
                 <tr class="list">
-                    <td class="date"></td>
+                    <td class="date">{{ $task->created_at }}</td>
                     <form action="/todo/update" method="POST">
                         @csrf
                         {{-- 取得したデータをinputのテキストボックスの中に入れて表示させる --}}
