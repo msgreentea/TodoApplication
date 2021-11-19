@@ -21,7 +21,7 @@ class TodoController extends Controller
 
         $tasks = $request->all();
         $tasks = Task::create(['content' => $request->content]);
-        // dd($tasks);
+        dd($tasks);
         return redirect('/');
     }
 

@@ -42,12 +42,12 @@
                             <button class="btn btn_update">更新</button>
                         </td>
                     </form>
-                    <form action="/todo/delete" method="POST">
+                    <form action="/todo/delete"  method="POST">
                         @csrf
                         {{-- type="hidden"で非表示にする --}}
                         <td><input type="hidden" name="content" value="{{ $task->content }}"></td>
                         <td>
-                            <button class="btn btn_delete">追加</button>
+                            <button class="btn btn_delete">削除</button>
                         </td>
                     </form>
                 </tr>
