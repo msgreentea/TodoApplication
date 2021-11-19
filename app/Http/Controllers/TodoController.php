@@ -35,7 +35,8 @@ class TodoController extends Controller
         Task::where('id', $request->id)->update($tasks);
 
         // dd($tasks);
-        return view('update', ['tasks' => $tasks]);
+        // return view('update', ['tasks' => $tasks]);
+        return redirect('/');
     }
 
     public function delete(TodoRequest $request)
