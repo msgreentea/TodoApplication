@@ -33,18 +33,37 @@ class TodoController extends Controller
         unset($tasks['_token']);
 
 
-        Task::where('content', $request->content)->update([
-            'content' => $request->content
-        ]);
+        // 重複がなかったらupdate
+        // $updatedTask = Task::where('content', $request->content)->first();
+        // if ($updatedTask !== null) {
+        //     Task::where('content', $request->content)->update($updatedTask);
+        // }
+        // $updatedTask = Task::where('content', $request->content)->first();
+
+        // 同じデータが全て更新されないようにfirstしてからupdate
+        // $updatedTask = Task::where('content', $request->content)->update($updatedTask);
+        // if ($updatedTask = Task::where('content', $request->content)->first()) {
+        //     $updatedTask->update($updatedTask);
+        // }
+
+        Task::where('id', $request->id)->update($tasks);
 
         // dd($tasks);
         return view('update', ['tasks' => $tasks]);
+
+        // Task::where('content', $request->content)->first();
+        // Task::where('content', $request->content)->update($tasks);
+        // dd($tasks)->toArray();
+        // return view('update', ['tasks' => $tasks]);
     }
 
     public function delete(TodoRequest $request)
     {
-        $tasks = new Task;
-        $tasks = Task::find($request->content)->delete();
-        // return redirect('/');
+        $deletedTask = new Task;
+        // $tasks = Task::find($request->content)->delete();
+        if ($deletedTask::find($request->content)->first()) {
+            Task::find($request->content)->delete($deletedTask);
+        }
+        return redirect('/');
     }
 }

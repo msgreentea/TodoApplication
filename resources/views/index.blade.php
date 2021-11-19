@@ -50,10 +50,6 @@
                             <button class="btn btn_delete">追加</button>
                         </td>
                     </form>
-                    {{-- <td><input class="btn btn_update" type="submit" name="/todo/update" value="更新"></td>
-                    <td><input class="btn btn_delete" type="submit" name="/todo/delete" value="削除"></td> --}}
-                    {{-- <td>{{ $task->update }}</td> --}}
-                    {{-- <td>{{ $task->delete }}</td> --}}
                 </tr>
                 @endforeach
             </table>
