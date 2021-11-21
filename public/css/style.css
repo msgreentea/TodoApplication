@@ -6,17 +6,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     position: relative;
+    height: 100vh;
+    width: 100vw;
 }
 .container {
     background-color: white;
     padding: 30px;
     border-radius: 10px;
-
-    /* 下の余白を消したい。けどわからない */
     position: absolute;
-    top: 30%;
+    top: 25%;
 }
 /* タイトル〜追加ボタンまで */
 h1 {
@@ -61,12 +60,15 @@ h1 {
 /* テーブル */
 table {
     margin: 0px auto;
-    width: 635px;
     table-layout: fixed;
+    table-layout: auto;
+    width: 100%;
     text-align: center;
+    /* display: table; */
+    line-height: 50px;
 }
 table tr {
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
     margin: 10px 0;
     align-items: center;
@@ -76,7 +78,10 @@ table thead th {
     /* text-align: center; */
     width: 100%;
 }
-
+.delete {
+    /* display: none; */
+    visibility: collapse;
+}
 /* テーブル内のforeachでループさせる部分 */
 .listed_textbox {
     height: 27px;
