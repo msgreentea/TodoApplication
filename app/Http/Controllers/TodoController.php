@@ -21,14 +21,14 @@ class TodoController extends Controller
 
         $tasks = $request->all();
         $tasks = Task::create(['content' => $request->content]);
-        dd($tasks);
+        // dd($tasks);
         return redirect('/');
     }
 
-    public function update(TodoRequest $request)
+    public function update(TodoRequest $request, $id)
     {
         $this->validate($request, Task::$validation);
-
+        $tasks = Task::find($id);
         $tasks = $request->all();
         unset($tasks['_token']);
         Task::where('id', $request->id)->update($tasks);
@@ -37,9 +37,10 @@ class TodoController extends Controller
         return redirect('/');
     }
 
-    public function delete(TodoRequest $request)
+    public function delete(TodoRequest $request, $id)
     {
-
-        // return redirect('/');
+        $tasks = Task::find($id);
+        Task::find($request->id)->delete();
+        return redirect('/');
     }
 }

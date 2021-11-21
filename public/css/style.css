@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 body {
-    background-color: #2D197C;
+    background-color: #2d197c;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,6 +13,7 @@ body {
     background-color: white;
     padding: 30px;
     border-radius: 10px;
+
     /* 下の余白を消したい。けどわからない */
     position: absolute;
     top: 30%;
@@ -26,13 +27,9 @@ h1 {
     justify-content: space-between;
     width: 685px;
 }
-input {
-    border: 2px solid #ccc;
-}
 .textbox {
-    border-radius: 10px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-
 }
 .textbox:focus {
     outline: none;
@@ -53,45 +50,59 @@ input {
     color: white;
 }
 .btn_add {
-    border: 2.5px solid #DC70FA;
-    color: #DC70FA;
+    border: 2.5px solid #dc70fa;
+    color: #dc70fa;
 }
 .btn_add:hover {
-    background-color: #DC70FA;
+    background-color: #dc70fa;
 }
 table {
-    margin: 40px auto;
+    margin: 0px auto;
     width: 635px;
+    table-layout: fixed;
+    text-align: center;
 }
 table tr {
     display: flex;
     justify-content: space-between;
-    margin: 30px 0;
+    margin: 10px 0;
+    align-items: center;
 }
-.list td {
-    line-height: 50px;
+
+table thead th {
+    padding: 20px 0;
+    /* text-align: center; */
+    width: 100%;
 }
 
 .listed_textbox {
-    height: 30px;
-    width: 247px;
+    height: 27px;
+    width: 240px;
 }
 
 .btn_update {
-    border: 2.5px solid #FA9770;
-    color: #FA9770;
+    border: 2.5px solid #fa9770;
+    color: #fa9770;
 }
 .btn_update:hover {
-    background-color: #FA9770;
+    background-color: #fa9770;
 }
 .btn_delete {
-    border: 2.5px solid #71FADC;
-    color: #71FADC;
+    border: 2.5px solid #71fadc;
+    color: #71fadc;
 }
 .btn_delete:hover {
-    background-color: #71FADC;
+    background-color: #71fadc;
 }
-table th {
-    text-align: center;
-    width: 100%;
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 30%;
+    }
+    .new_textbox {
+        width: 20%;
+    }
+    .listed_textbox {
+        width: 10%;
+    }
 }

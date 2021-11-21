@@ -12,45 +12,49 @@
 </head>
 <body>
     <div class="container">
-        {{-- @if (count($errors) > 0)
-            <p>The content field is required.</p>
-        @endif --}}
         <h1>Todo List</h1>
+        @if (count($errors) > 0)
+            <ul>
+                <li>The content field is required.</li>
+            </ul>
+        @endif
         <form class="type_tasks" action="/todo/create" method="POST">
         @csrf
-            {{-- @error('content') --}}
             <input class="textbox new_textbox" type="text" name="content">
             <button class="btn btn_add">追加</button>
-            {{-- @enderror --}}
         </form>
         <div class="lists">
             <table>
-                <tr class="list_titles">
-                    <th>作成日</th>
-                    <th>タスク名</th>
-                    <th>更新</th>
-                    <th>削除</th>
-                </tr>
+                <thead>
+                    <tr class="list_titles">
+                        <th>作成日</th>
+                        <th>タスク名</th>
+                        <th>更新</th>
+                        <th>削除</th>
+                    </tr>
+                </thead>
                 @foreach ($tasks as $task)
-                <tr class="list">
-                    <td class="date">{{ $task->created_at }}</td>
-                    <form action="/todo/update" method="POST">
-                        @csrf
-                        {{-- 取得したデータをinputのテキストボックスの中に入れて表示させる --}}
-                        <td><input type="text" name="content" value="{{ $task->content }}"></td>
-                        <td>
-                            <button class="btn btn_update">更新</button>
-                        </td>
-                    </form>
-                    <form action="/todo/delete"  method="POST">
-                        @csrf
-                        {{-- type="hidden"で非表示にする --}}
-                        <td><input type="hidden" name="content" value="{{ $task->content }}"></td>
-                        <td>
-                            <button class="btn btn_delete">削除</button>
-                        </td>
-                    </form>
-                </tr>
+                <tbody>
+                    <tr class="list">
+                        <td class="date">{{ $task->created_at }}</td>
+                        <form action="/todo/update/{{ $task->id }}" method="POST">
+                            @csrf
+                            {{-- 取得したデータをinputのテキストボックスの中に入れて表示させる --}}
+                            <td><input type="text" class="textbox listed_textbox" name="content" value="{{ $task->content }}"></td>
+                            <td>
+                                <button class="btn btn_update">更新</button>
+                            </td>
+                        </form>
+                        <form action="/todo/delete/{{ $task->id }}"  method="POST">
+                            @csrf
+                            {{-- type="hidden"で非表示にする --}}
+                            <td><input type="hidden" class="textbox listed_textbox" name="content" value="{{ $task->content }}"></td>
+                            <td>
+                                <button class="btn btn_delete">削除</button>
+                            </td>
+                        </form>
+                    </tr>
+                </tbody>
                 @endforeach
             </table>
         </div>
