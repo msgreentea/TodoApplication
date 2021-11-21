@@ -18,6 +18,7 @@ body {
     position: absolute;
     top: 30%;
 }
+/* タイトル〜追加ボタンまで */
 h1 {
     font-size: 24px;
     margin-bottom: 20px;
@@ -56,6 +57,8 @@ h1 {
 .btn_add:hover {
     background-color: #dc70fa;
 }
+
+/* テーブル */
 table {
     margin: 0px auto;
     width: 635px;
@@ -68,18 +71,17 @@ table tr {
     margin: 10px 0;
     align-items: center;
 }
-
 table thead th {
     padding: 20px 0;
     /* text-align: center; */
     width: 100%;
 }
 
+/* テーブル内のforeachでループさせる部分 */
 .listed_textbox {
     height: 27px;
     width: 240px;
 }
-
 .btn_update {
     border: 2.5px solid #fa9770;
     color: #fa9770;
