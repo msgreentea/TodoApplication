@@ -13,9 +13,11 @@
 <body>
     <div class="container">
         <h1>Todo List</h1>
-        @if (count($errors) > 0)
+        @if (count($errors)>0)
             <ul>
-                <li>The content field is required.</li>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
             </ul>
         @endif
         <form class="type_tasks" action="/todo/create" method="POST">
